@@ -1,6 +1,3 @@
-# FSD--CSE12
-My first repository on Github
-Author-Anjali
 # FSD – CSE12
 
 This repository contains all my work, assignments, and practice projects for the **Full Stack Development (FSD)** course – **CSE12**.
@@ -15,9 +12,8 @@ It includes individual tasks, lab exercises, and complete full-stack application
 
 ## ⚙️ Technologies Used
 - HTML5, CSS3, JavaScript  
-- Node.js & Express.js  
+- Node.js 
 - React.js  
-- MongoDB / MySQL  
 - Git & GitHub
 
 ## 🚀 How to Run Locally
