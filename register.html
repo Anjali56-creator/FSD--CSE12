@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration - Online Bookstore</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // JavaScript Form Validation
+    function validateForm() {
+      let name = document.forms["regForm"]["name"].value;
+      let password = document.forms["regForm"]["password"].value;
+      let email = document.forms["regForm"]["email"].value;
+      let phone = document.forms["regForm"]["phone"].value;
+
+      let namePattern = /^[A-Za-z ]{6,}$/;
+      if (!namePattern.test(name)) {
+        alert("❌ Name must contain only letters and be at least 6 characters long.");
+        return false;
+      }
+
+      if (password.length < 6) {
+        alert("❌ Password must be at least 6 characters long.");
+        return false;
+      }
+
+      let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alert("❌ Please enter a valid email address (e.g., name@example.com).");
+        return false;
+      }
+
+      let phonePattern = /^[0-9]{10}$/;
+      if (!phonePattern.test(phone)) {
+        alert("❌ Phone number must be exactly 10 digits.");
+        return false;
+      }
+
+      alert("✅ Registration Successful!");
+      return true;
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>📚 ABC College Online Bookstore</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Registration</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+
+  <div class="container">
+    <h2>Registration Form</h2>
+    <form name="regForm" onsubmit="return validateForm()">
+      <label>Name:</label><br>
+      <input type="text" name="name"><br><br>
+
+      <label>Password:</label><br>
+      <input type="password" name="password"><br><br>
+
+      <label>Email:</label><br>
+      <input type="email" name="email"><br><br>
+
+      <label>Phone:</label><br>
+      <input type="text" name="phone"><br><br>
+
+      <label>Gender:</label><br>
+      <input type="radio" name="gender"> Male
+      <input type="radio" name="gender"> Female<br><br>
+
+      <label>Date of Birth:</label><br>
+      <select><option>Day</option></select>
+      <select><option>Month</option></select>
+      <select><option>Year</option></select><br><br>
+
+      <label>Languages Known:</label><br>
+      <input type="checkbox"> English
+      <input type="checkbox"> Hindi
+      <input type="checkbox"> Tamil
+      <input type="checkbox"> Telugu<br><br>
+
+      <label>Address:</label><br>
+      <textarea rows="4" cols="40"></textarea><br><br>
+
+      <input type="submit" value="Register">
+      <input type="reset" value="Clear">
+    </form>
+  </div>
+</body>
+</html>
