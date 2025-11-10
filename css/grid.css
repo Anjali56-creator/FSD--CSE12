@@ -1,0 +1,31 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+}
+.container{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(137, 9, 137);
+    margin: 5px;
+    gap: 5px;
+    height: 500px;
+    width: 500px;
+    
+}
+.first{
+    background-color: blueviolet;
+}
+.second{
+    background-color: blanchedalmond;
+}
+.third{
+    background-color: aqua;
+}
+.fourth{
+    background-color: brown;
+}
