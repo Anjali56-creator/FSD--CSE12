@@ -6,7 +6,7 @@ console.log(marks.length);
 //console.log(arr);
 //how to access any element
 //console.log(arr[1]);
-//as we know primitive datatypes are mutuable
+//as we know primitive datatypes are mutuable+
 //arr[1]="soo";
 //console.log(arr);
 //add any element -->push
