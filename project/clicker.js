@@ -12,6 +12,6 @@ body.addEventListener('click',(e)=>{
     body.append(circle);
     setTimeout(()=>{
         circle.remove();
-    },1000);
+    },5000);
 
 })
