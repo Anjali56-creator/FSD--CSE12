@@ -1,27 +1,36 @@
 .circle{
-  height:60px;
-  width:60px;
-  border-radius:50%;
-  position:absolute;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:white;
-  font-size:10px;
-  font-weight:bold;
-  text-align:center;
-  animation: grow 1.5s forwards;
+    height:60px;
+    width:60px;
+    border-radius:50%;
+    position:absolute;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+    font-size:12px;
+    font-weight:bold;
+    text-align:center;
+
+    pointer-events:none;
+
+    /* smooth animation */
+    animation: grow 1.8s ease-out forwards;
 }
 
-@keyframes grow{
-  0%{
-    transform:scale(0);
-    opacity:1;
-    font-size:10px;
-  }
-  100%{
-    transform:scale(6);
-    opacity:0;
-    font-size:26px;
-  }
+@keyframes grow {
+    0%{
+        transform: translate(-50%, -50%) scale(0.1);
+        opacity:1;
+    }
+    70%{
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity:0.9;
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(3.5);
+        opacity:0;
+    }
 }
+
