@@ -15,7 +15,6 @@
 
     pointer-events:none;
 
-    /* smooth animation */
     animation: grow 1.8s ease-out forwards;
 }
 
