@@ -1,0 +1,25 @@
+body{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 5px;
+}
+
+.id1{
+    width: 500px;
+    height: 500px;
+    background-color: red;
+    margin: 10px;
+}
+.id2{
+    width: 500px;
+    height: 500px;
+    background-color: green;
+    margin: 10px;
+}
+.id3{
+    width: 500px;
+    height: 500px;
+    background-color: blue;
+    margin: 10px;
+}

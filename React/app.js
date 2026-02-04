@@ -10,8 +10,6 @@ const React={
     return element;
 }
 }
-
-
 const element1=createElement('h1',{className:'element',id:'first',style:'font-size:80px;'},'Hello, world!');
 const element2=createElement('h2',{className:'element',id:'first',style:'font-size:80px;'},'Hello, everyone!');
 
