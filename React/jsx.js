@@ -10,6 +10,7 @@ root.render(element);
 
 
 //react component:->it is just a function  the only condition is the first letter should be capital.
+//why capital letter?->because in JSX, lowercase tag names are considered to be HTML tags, while capitalized tag names are considered to be React components. So if we want to create a React component, we need to start the name with a capital letter.
 function App(){
     return (
         <h2>Hyeeee</h2>
