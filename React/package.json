@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "dom": "^0.0.3",
+    "react": "^19.2.4"
+  },
+  "name": "web-development",
+  "version": "1.0.0",
+  "description": "This repository contains all my work, assignments, and practice projects for the **Full Stack Development (FSD)** course – **CSE12**.",
+  "main": "index3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anjali56-creator/FSD--CSE12.git"
+  },
+  "author": "Anjali",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anjali56-creator/FSD--CSE12/issues"
+  },
+  "homepage": "https://github.com/Anjali56-creator/FSD--CSE12#readme",
+  "devDependencies": {
+    "vite": "^7.3.1"
+  }
+}
