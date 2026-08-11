@@ -2,6 +2,7 @@ let a=10;
 let b=345.2568;
 let c=b.toFixed(3);
 console.log(typeof c);//it will return string
+console.log(c);
 // Number
 // let a = 10;
 // let b = 345.6821;
