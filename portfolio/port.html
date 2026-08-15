@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anjali | Portfolio</title>
+    <style>
+        :root {
+            --bg: #060816;
+            --bg-2: #111827;
+            --card: rgba(15, 23, 42, 0.88);
+            --text: #f8fafc;
+            --muted: #cbd5e1;
+            --accent: #8b5cf6;
+            --accent-2: #22d3ee;
+            --border: rgba(255,255,255,0.14);
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background: radial-gradient(circle at top left, rgba(34,211,238,0.16), transparent 30%), linear-gradient(135deg, var(--bg), var(--bg-2) 60%, #020617);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            transition: background 0.8s ease;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 24rem;
+            height: 24rem;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.26;
+            z-index: 0;
+            animation: floatBlob 10s ease-in-out infinite alternate;
+        }
+
+        body::before {
+            top: -4rem;
+            right: -5rem;
+            background: var(--accent);
+        }
+
+        body::after {
+            bottom: -6rem;
+            left: -5rem;
+            background: var(--accent-2);
+            animation-duration: 12s;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            width: min(1120px, calc(100% - 2rem));
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(12px);
+            background: rgba(6, 8, 22, 0.72);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .brand {
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover { color: var(--text); }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+            padding: 5rem 0 3rem;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 0.35rem 0.7rem;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 999px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4vw, 3.3rem);
+            line-height: 1.1;
+            margin: 0 0 1rem;
+            background: linear-gradient(90deg, var(--text), var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 650px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.1rem;
+            border-radius: 999px;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            color: #04121d;
+            box-shadow: 0 10px 25px rgba(34, 211, 238, 0.2);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.24);
+        }
+
+        .hero-card {
+            padding: 1.5rem;
+        }
+
+        .hero-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero-card ul {
+            padding-left: 1rem;
+            color: var(--muted);
+        }
+
+        section {
+            padding: 2.5rem 0;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .about-grid,
+        .projects-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .about-grid {
+            grid-template-columns: 1.2fr 0.8fr;
+        }
+
+        .about-card,
+        .project-card,
+        .contact-card {
+            padding: 1.25rem;
+        }
+
+        .about-card p,
+        .contact-card p {
+            color: var(--muted);
+            margin: 0.3rem 0;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .skill-pill {
+            padding: 0.6rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(96,165,250,0.3);
+            background: rgba(96,165,250,0.1);
+            color: #dbeafe;
+        }
+
+        .projects-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .project-card h4 {
+            margin-top: 0;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .contact-links {
+            display: grid;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0 3rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        @keyframes floatBlob {
+            from { transform: translateY(0px) translateX(0px); }
+            to { transform: translateY(20px) translateX(20px); }
+        }
+
+        @media (max-width: 760px) {
+            .hero,
+            .about-grid,
+            .contact-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 3rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a class="brand" href="#home">Anjali</a>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="home">
+        <div class="container hero">
+            <div>
+                <span class="eyebrow">Frontend Developer</span>
+                <h1>I build clean, modern web experiences.</h1>
+                <p>I’m a web developer who loves turning ideas into responsive, user-friendly websites using HTML, CSS, JavaScript, and React.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#projects">View Projects</a>
+                    <a class="btn btn-secondary" href="#contact">Contact Me</a>
+                </div>
+            </div>
+            <div class="card hero-card">
+                <h3>What I focus on</h3>
+                <ul>
+                    <li>Responsive layouts</li>
+                    <li>Interactive UI design</li>
+                    <li>Fast, polished web pages</li>
+                </ul>
+            </div>
+        </div>
+
+        <section id="about">
+            <div class="container">
+                <div class="section-title">About Me</div>
+                <div class="about-grid">
+                    <div class="card about-card">
+                        <p>I enjoy crafting digital experiences that are simple, elegant, and effective. My work blends creativity with practical problem-solving to make websites feel intuitive and engaging.</p>
+                    </div>
+                    <div class="card about-card">
+                        <p><strong>Location:</strong> India</p>
+                        <p><strong>Specialty:</strong> Frontend Development</p>
+                        <p><strong>Focus:</strong> Modern, responsive web design</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <div class="section-title">Skills</div>
+                <div class="card about-card">
+                    <div class="skills-list">
+                        <span class="skill-pill">HTML5</span>
+                        <span class="skill-pill">CSS3</span>
+                        <span class="skill-pill">JavaScript</span>
+                        <span class="skill-pill">React</span>
+                        <span class="skill-pill">Responsive Design</span>
+                        <span class="skill-pill">UI/UX Basics</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <div class="section-title">Projects</div>
+                <div class="projects-grid">
+                    <div class="card project-card">
+                        <h4>CSS Animations</h4>
+                        <p>A collection of visual effects and transitions built with CSS.</p>
+                        <a class="project-link" href="../css/animation.html" target="_blank">Open project →</a>
+                    </div>
+                    <div class="card project-card">
+                        <h4>Mini Clicker Game</h4>
+                        <p>A simple interactive project with JavaScript and DOM manipulation.</p>
+                        <a class="project-link" href="../project/clicker.html" target="_blank">Open project →</a>
+                    </div>
+                    <div class="card project-card">
+                        <h4>React Vite App</h4>
+                        <p>A lightweight React-based app demonstrating modern front-end structure.</p>
+                        <a class="project-link" href="../react 2/vite-project/index.html" target="_blank">Open project →</a>
+                    </div>
+                    <div class="card project-card">
+                        <h4>Digital Clock</h4>
+                        <p>A polished JavaScript project featuring real-time updates and styling.</p>
+                        <a class="project-link" href="../project/digitalclock.html" target="_blank">Open project →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="section-title">Contact</div>
+                <div class="contact-grid">
+                    <div class="card contact-card">
+                        <p>Feel free to reach out for collaboration, freelance work, or a quick chat about web development.</p>
+                        <div class="contact-links">
+                            <a class="project-link" href="mailto:yourname@email.com">Email: yourname@email.com</a>
+                            <a class="project-link" href="tel:+919999999999">Phone: +91 99999 99999</a>
+                        </div>
+                    </div>
+                    <div class="card contact-card">
+                        <p>Open to:</p>
+                        <p>• Frontend development</p>
+                        <p>• Responsive design</p>
+                        <p>• Small business websites</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">© 2026 Anjali. Built with HTML, CSS, and love.</div>
+    </footer>
+
+    <script>
+        const root = document.documentElement;
+        const palettes = [
+            { accent: '#8b5cf6', accent2: '#22d3ee', bg: '#060816', bg2: '#111827', card: 'rgba(15, 23, 42, 0.88)' },
+            { accent: '#fb923c', accent2: '#f43f5e', bg: '#140d0a', bg2: '#2b120d', card: 'rgba(35, 18, 11, 0.88)' },
+            { accent: '#2dd4bf', accent2: '#818cf8', bg: '#07151d', bg2: '#112b34', card: 'rgba(15, 36, 48, 0.88)' }
+        ];
+
+        let paletteIndex = 0;
+        setInterval(() => {
+            const palette = palettes[paletteIndex % palettes.length];
+            root.style.setProperty('--accent', palette.accent);
+            root.style.setProperty('--accent-2', palette.accent2);
+            root.style.setProperty('--bg', palette.bg);
+            root.style.setProperty('--bg-2', palette.bg2);
+            root.style.setProperty('--card', palette.card);
+            paletteIndex++;
+        }, 5000);
+    </script>
+</body>
+</html>

@@ -6,6 +6,7 @@ const str3=`hii eveyone`;
 console.log(str1,str2,str3);
 const day=23;
 const str4=`hii everyone today is ${day}`;
+
 console.log(str4);
 console.log(str4.length);
 console.log(str4[1]);
