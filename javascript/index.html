@@ -3,44 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch from js</title>
+    <title>Fetch Products from JS</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th {
+            background-color: #222;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+    </style>
+
     <script>
-       
-       
         const URL = "https://dummyjson.com/products";
 
-async function loadProduct() {
-    try {
-        const res = await fetch(URL);
-        const data = await res.json();
+        async function loadProduct() {
 
-        const ele = document.getElementById("products");
+            try {
 
-        data.products.forEach((i) => {
-            ele.innerHTML += `
-            <tr>
-                <td>${i.id}</td>
-                <td>${i.title}</td>
-                <td>${i.description}</td>
-                <td>${i.price}</td>
-                <td>${i.discountPercentage}</td>
-                <td>${i.rating}</td>
-                <td>${i.stock}</td>
-                <td>${i.brand}</td>
-                <td>${i.category}</td>
-            </tr>
-            `;
-        });
+                const res = await fetch(URL);
 
-    } catch (err) {
-        console.log("Error:", err);
-    }
-}
+                const data = await res.json();
 
-loadProduct();
+                const ele = document.getElementById("products");
+
+                data.products.forEach((i) => {
+
+                    // Convert Dollar to Rupee
+                    const rupeePrice = (i.price * 88).toFixed(2);
+
+                    ele.innerHTML += `
+                        <tr>
+
+                            <td>${i.id}</td>
+
+                            <td>
+                                <img 
+                                    src="${i.thumbnail}" 
+                                    alt="${i.title}"
+                                >
+                            </td>
+
+                            <td>${i.title}</td>
+
+                            <td>${i.description}</td>
+
+                            <td>₹${rupeePrice}</td>
+
+                            <td>${i.discountPercentage}%</td>
+
+                            <td>${i.rating}</td>
+
+                            <td>${i.stock}</td>
+
+                            <td>${i.brand || "N/A"}</td>
+
+                            <td>${i.category}</td>
+
+                        </tr>
+                    `;
+                });
+
+            } 
+            catch (err) {
+
+                console.log("Error:", err);
+
+            }
+        }
+
+        loadProduct();
+
     </script>
+
 </head>
+
 <body>
-    
+
+    <h1>Product List</h1>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price (₹)</th>
+                <th>Discount</th>
+                <th>Rating</th>
+                <th>Stock</th>
+                <th>Brand</th>
+                <th>Category</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="products">
+
+        </tbody>
+
+    </table>
+
 </body>
 </html>
