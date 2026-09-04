@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: black;color: aliceblue;">
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+</body>
+<script>
+    //adding new element to the list
+    function addLanguage(langName){
+        const li = document.createElement('li');
+         li.innerHTML=`${langName}`;
+        document.querySelector('.language').appendChild(li);
+    }
+    addLanguage("python")
+    addLanguage("java")
+   //adding new element in list optimized way
+   function addOptiLang(langName){
+    const li=document.createElement('li');
+    li.appendChild(document.createTextNode(langName))
+    document.querySelector('.language').appendChild(li);
+   }
+
+   addOptiLang("c++")
+   //edit
+   const firstLang=document.querySelector("li:nth-child(2)")
+   const newli=document.createElement('li')
+   newli.textContent="c"
+   firstLang.replaceWith(newli)
+   //another way of edit
+   const secondLang=document.querySelector("li:first-child")
+   secondLang.outerHTML='<li>html</li>'
+
+   //remove
+    const thirdLang=document.querySelector("li:nth-child(3)")
+    thirdLang.remove()
+
+</script>
+</html>

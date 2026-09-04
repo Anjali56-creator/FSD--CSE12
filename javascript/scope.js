@@ -33,7 +33,11 @@ function addone(num){
     return num+1
 }
 
-addtwo(5)
+//addtwo(5)
 const addtwo=function(num){
     return num+2
 }
+
+
+//scope in node is empty set and in browser it is window
+console.log() //in node
